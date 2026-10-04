@@ -16,6 +16,19 @@ export default function Home() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Trigger Facebook Pixel Lead Event
+    try {
+      if (typeof window !== "undefined" && typeof (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq === "function") {
+        (window as unknown as { fbq: (...args: unknown[]) => void }).fbq("track", "Lead", {
+          content_name: "Pendaftaran Sebulan Jadi Pengusaha Batch 11",
+          status: "completed",
+        });
+      }
+    } catch {
+      // ignore
+    }
+
     // Pakai Unicode escape agar emoji tidak corrupt saat encoding di Windows
     const pray    = "\u{1F64F}";        // 🙏
     const prayTone = "\u{1F64F}\u{1F3FB}"; // 🙏🏻
