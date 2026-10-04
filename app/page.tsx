@@ -179,6 +179,15 @@ export default function Home() {
           display: block;
         }
 
+        .hero-points {
+          background: #1a1a1a;
+          color: #fff;
+          padding: 20px 22px;
+          font-size: 15px;
+          line-height: 1.7;
+        }
+        .hero-points p + p { margin-top: 8px; }
+
         .sub-banner {
           background: #cc0000;
           text-align: center;
@@ -285,6 +294,7 @@ export default function Home() {
           .promo-desc { font-size: 15px; }
           .promo-free-badge { font-size: 16px; }
 
+          .hero-points { padding: 26px 36px; font-size: 16px; }
           .sub-banner { font-size: 19px; padding: 14px 36px; }
 
           .arrows-area { gap: 48px; padding: 36px 36px; }
@@ -313,6 +323,7 @@ export default function Home() {
           .promo-desc { font-size: 16px; }
           .promo-free-badge { font-size: 17px; }
 
+          .hero-points { padding: 32px 48px; font-size: 17px; }
           .sub-banner { font-size: 22px; padding: 16px 56px; }
 
           .arrows-area { gap: 64px; padding: 44px 56px; }
@@ -373,6 +384,15 @@ export default function Home() {
               alt="Program Kuliah Sebulan Jadi Pengusaha Batch 11"
               className="poster-img"
             />
+          </div>
+
+          {/* Red Banner Below Image */}
+          <div className="top-banner">🚀 100% GRATIS - Tanpa Biaya Apapun</div>
+
+          {/* Bullet points info below image */}
+          <div className="hero-points">
+            <p>📌 <strong>100% Gratis!</strong> Cocok untuk pemula maupun yang ingin naik level dalam bisnis.</p>
+            <p>📌 <strong>Bimbingan langsung</strong> dari mentor sukses dan berpengalaman.</p>
           </div>
 
           {/* Sub-Banner */}
