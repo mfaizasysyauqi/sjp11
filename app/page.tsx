@@ -49,26 +49,23 @@ export default function Home() {
       // ignore
     }
 
-    // Pakai Unicode escape agar emoji tidak corrupt saat encoding di Windows
-    const pray    = "\u{1F64F}";        // 🙏
-    const prayTone = "\u{1F64F}\u{1F3FB}"; // 🙏🏻
-    const check   = "\u{2705}";         // ✅
-    const smile   = "\u{1F60A}";        // 😊
-    const hands   = "\u{1F932}";        // 🤲
+    const textMessage = 
+`Assalamualaikum 🙏🏻
+Saya ingin mendaftar di Program Kuliah "Sebulan Jadi Pengusaha Batch #11" 🙏
 
-    const msg = encodeURIComponent(
-      `Assalamualaikum${prayTone}\n` +
-      `Saya ingin mendaftar di Program Kuliah "Sebulan Jadi Pengusaha Batch #11"${pray}\n\n` +
-      `Perkenalkan saya:\n` +
-      `${check}Nama :  ${form.nama}\n` +
-      `${check}Asal Kota : ${form.kota}\n` +
-      `${check}Usia : ${form.usia} Tahun\n` +
-      `${check}Pekerjaan : ${form.pekerjaan}\n\n` +
-      `Saya siap belajar sungguh-sungguh &\n` +
-      `mohon bantuanya wasilah ikut program ini saya bisa Makin Kaya, Makin Takwa${smile}${hands}\n\n` +
-      `Terimakasih`
-    );
-    window.open(`https://wa.me/6281932800707?text=${msg}`, "_blank");
+Perkenalkan saya:
+✅ Nama : ${form.nama}
+✅ Asal Kota : ${form.kota}
+✅ Usia : ${form.usia} Tahun
+✅ Pekerjaan : ${form.pekerjaan}
+
+Saya siap belajar sungguh-sungguh &
+mohon bantuanya wasilah ikut program ini saya bisa Makin Kaya, Makin Takwa 😊🤲
+
+Terimakasih`;
+
+    const msg = encodeURIComponent(textMessage);
+    window.open(`https://api.whatsapp.com/send?phone=6281932800707&text=${msg}`, "_blank");
   };
 
   const isValid =
