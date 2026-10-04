@@ -16,16 +16,23 @@ export default function Home() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Pakai Unicode escape agar emoji tidak corrupt saat encoding di Windows
+    const pray    = "\u{1F64F}";        // 🙏
+    const prayTone = "\u{1F64F}\u{1F3FB}"; // 🙏🏻
+    const check   = "\u{2705}";         // ✅
+    const smile   = "\u{1F60A}";        // 😊
+    const hands   = "\u{1F932}";        // 🤲
+
     const msg = encodeURIComponent(
-      `Assalamualaikum🙏🏻\n` +
-      `Saya ingin mendaftar di Program Kuliah "Sebulan Jadi Pengusaha Batch #11"🙏\n\n` +
+      `Assalamualaikum${prayTone}\n` +
+      `Saya ingin mendaftar di Program Kuliah "Sebulan Jadi Pengusaha Batch #11"${pray}\n\n` +
       `Perkenalkan saya:\n` +
-      `✅Nama :  ${form.nama}\n` +
-      `✅Asal Kota : ${form.kota}\n` +
-      `✅Usia : ${form.usia} Tahun\n` +
-      `✅Pekerjaan : ${form.pekerjaan}\n\n` +
+      `${check}Nama :  ${form.nama}\n` +
+      `${check}Asal Kota : ${form.kota}\n` +
+      `${check}Usia : ${form.usia} Tahun\n` +
+      `${check}Pekerjaan : ${form.pekerjaan}\n\n` +
       `Saya siap belajar sungguh-sungguh &\n` +
-      `mohon bantuanya wasilah ikut program ini saya bisa Makin Kaya, Makin Takwa😊🤲\n\n` +
+      `mohon bantuanya wasilah ikut program ini saya bisa Makin Kaya, Makin Takwa${smile}${hands}\n\n` +
       `Terimakasih`
     );
     window.open(`https://wa.me/6281932800707?text=${msg}`, "_blank");
