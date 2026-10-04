@@ -11,8 +11,28 @@ export default function Home() {
     pekerjaan: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const formatPhoneNumber = (val: string) => {
+    const digits = val.replace(/\D/g, "").slice(0, 14);
+    if (digits.length <= 4) return digits;
+    if (digits.length <= 8) return `${digits.slice(0, 4)}-${digits.slice(4)}`;
+    if (digits.length <= 12) return `${digits.slice(0, 4)}-${digits.slice(4, 8)}-${digits.slice(8)}`;
+    return `${digits.slice(0, 4)}-${digits.slice(4, 8)}-${digits.slice(8, 12)}-${digits.slice(12)}`;
+  };
+
+  const formatAge = (val: string) => {
+    return val.replace(/\D/g, "").slice(0, 3);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    if (name === "noWa") {
+      setForm((prev) => ({ ...prev, noWa: formatPhoneNumber(value) }));
+    } else if (name === "usia") {
+      setForm((prev) => ({ ...prev, usia: formatAge(value) }));
+    } else {
+      setForm((prev) => ({ ...prev, [name]: value }));
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -429,16 +449,17 @@ export default function Home() {
               <h2 className="form-title">Form Pendaftaran</h2>
               <form onSubmit={handleSubmit}>
                 {[
-                  { label: "Nama",               name: "nama",      type: "text", ph: "Nama Anda" },
-                  { label: "No Whatsapp",         name: "noWa",      type: "tel",  ph: "0856XXXXXXXX" },
-                  { label: "Kota / Kecamatan",    name: "kota",      type: "text", ph: "Kota / Kecamatan" },
-                  { label: "Usia",                name: "usia",      type: "text", ph: "Usia Anda" },
-                  { label: "Pekerjaan/Kegiatan",  name: "pekerjaan", type: "text", ph: "Pekerjaan/Kegiatan Saat Ini" },
-                ].map(({ label, name, type, ph }) => (
+                  { label: "Nama",               name: "nama",      type: "text", inputMode: "text",    ph: "Nama Anda" },
+                  { label: "No Whatsapp",         name: "noWa",      type: "tel",  inputMode: "numeric", ph: "0856-XXXX-XXXX" },
+                  { label: "Kota / Kecamatan",    name: "kota",      type: "text", inputMode: "text",    ph: "Kota / Kecamatan" },
+                  { label: "Usia",                name: "usia",      type: "text", inputMode: "numeric", ph: "Contoh: 25" },
+                  { label: "Pekerjaan/Kegiatan",  name: "pekerjaan", type: "text", inputMode: "text",    ph: "Pekerjaan/Kegiatan Saat Ini" },
+                ].map(({ label, name, type, inputMode, ph }) => (
                   <div className="field" key={name}>
                     <label>{label}</label>
                     <input
                       type={type}
+                      inputMode={inputMode as "text" | "numeric" | "tel"}
                       name={name}
                       value={form[name as keyof typeof form]}
                       onChange={handleChange}
