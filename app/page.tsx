@@ -16,13 +16,18 @@ export default function Home() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const msg =
-      `Halo, saya ingin mendaftar!%0A%0A` +
-      `*Nama:* ${form.nama}%0A` +
-      `*No WA:* ${form.noWa}%0A` +
-      `*Kota/Kecamatan:* ${form.kota}%0A` +
-      `*Usia:* ${form.usia}%0A` +
-      `*Pekerjaan/Kegiatan:* ${form.pekerjaan}`;
+    const msg = encodeURIComponent(
+      `Assalamualaikum🙏🏻\n` +
+      `Saya ingin mendaftar di Program Kuliah "Sebulan Jadi Pengusaha Batch #11"🙏\n\n` +
+      `Perkenalkan saya:\n` +
+      `✅Nama :  ${form.nama}\n` +
+      `✅Asal Kota : ${form.kota}\n` +
+      `✅Usia : ${form.usia} Tahun\n` +
+      `✅Pekerjaan : ${form.pekerjaan}\n\n` +
+      `Saya siap belajar sungguh-sungguh &\n` +
+      `mohon bantuanya wasilah ikut program ini saya bisa Makin Kaya, Makin Takwa😊🤲\n\n` +
+      `Terimakasih`
+    );
     window.open(`https://wa.me/6281932800707?text=${msg}`, "_blank");
   };
 
