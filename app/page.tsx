@@ -75,8 +75,8 @@ export default function Home() {
           color: #fff;
           text-align: center;
           font-weight: 700;
-          font-size: 14px;
-          padding: 11px 16px;
+          font-size: 15px;
+          padding: 12px 16px;
         }
 
         /* Content column — constrained width on larger screens */
@@ -87,14 +87,97 @@ export default function Home() {
           align-items: stretch;
         }
 
-        .hero-text {
-          background: #1a1a1a;
+        /* Promo Text Box (Image 1) */
+        .promo-box {
+          background: #181818;
           color: #fff;
-          padding: 20px 22px;
-          font-size: 15px;
-          line-height: 1.7;
+          text-align: center;
+          padding: 24px 20px 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 14px;
         }
-        .hero-text p + p { margin-top: 8px; }
+
+        .promo-batch {
+          font-size: 17px;
+          font-weight: 700;
+          font-style: italic;
+          color: #ffffff;
+        }
+        .promo-batch .highlight {
+          color: #e53935;
+          font-style: normal;
+          font-weight: 800;
+          margin-left: 4px;
+        }
+
+        .promo-slogan {
+          color: #ffd700;
+          font-size: 21px;
+          font-weight: 800;
+          font-style: italic;
+          line-height: 1.35;
+          margin: 4px 0;
+        }
+
+        .promo-speaker-label {
+          color: #ffffff;
+          font-size: 16px;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+        }
+
+        .promo-speaker-name {
+          color: #ffd700;
+          font-size: 27px;
+          font-weight: 900;
+          line-height: 1.1;
+          margin-top: 2px;
+        }
+
+        .promo-speaker-title {
+          color: #ffd700;
+          font-size: 16px;
+          font-weight: 700;
+          margin-top: -6px;
+        }
+
+        .promo-desc {
+          color: #f0f0f0;
+          font-size: 14px;
+          line-height: 1.6;
+          max-width: 540px;
+          margin-top: 8px;
+        }
+        .promo-desc p + p {
+          margin-top: 6px;
+        }
+
+        .promo-free-badge {
+          color: #ffffff;
+          font-size: 15px;
+          font-weight: 700;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          margin-top: 4px;
+        }
+
+        /* Poster Image Wrap (Image 2) */
+        .poster-wrap {
+          width: 100%;
+          background: #111;
+        }
+        .poster-img {
+          width: 100%;
+          height: auto;
+          display: block;
+        }
 
         .sub-banner {
           background: #cc0000;
@@ -189,11 +272,19 @@ export default function Home() {
 
         /* ── TABLET ≥ 640px ── */
         @media (min-width: 640px) {
-          .top-banner { font-size: 15px; padding: 13px 24px; }
+          .top-banner { font-size: 16px; padding: 13px 24px; }
 
           .col { max-width: 640px; align-self: center; }
 
-          .hero-text  { padding: 28px 36px; font-size: 16px; }
+          .promo-box { padding: 32px 28px 26px; gap: 16px; }
+          .promo-batch { font-size: 19px; }
+          .promo-slogan { font-size: 24px; }
+          .promo-speaker-label { font-size: 17px; }
+          .promo-speaker-name { font-size: 32px; }
+          .promo-speaker-title { font-size: 18px; }
+          .promo-desc { font-size: 15px; }
+          .promo-free-badge { font-size: 16px; }
+
           .sub-banner { font-size: 19px; padding: 14px 36px; }
 
           .arrows-area { gap: 48px; padding: 36px 36px; }
@@ -209,12 +300,19 @@ export default function Home() {
 
         /* ── DESKTOP ≥ 1024px ── */
         @media (min-width: 1024px) {
-          .top-banner { font-size: 16px; padding: 14px 40px; }
+          .top-banner { font-size: 17px; padding: 14px 40px; }
 
-          .col { max-width: 780px; }
+          .col { max-width: 720px; }
 
-          .hero-text  { padding: 40px 56px 32px; font-size: 18px; line-height: 1.8; }
-          .hero-text p + p { margin-top: 12px; }
+          .promo-box { padding: 40px 36px 32px; gap: 18px; }
+          .promo-batch { font-size: 21px; }
+          .promo-slogan { font-size: 27px; }
+          .promo-speaker-label { font-size: 18px; }
+          .promo-speaker-name { font-size: 36px; }
+          .promo-speaker-title { font-size: 20px; }
+          .promo-desc { font-size: 16px; }
+          .promo-free-badge { font-size: 17px; }
+
           .sub-banner { font-size: 22px; padding: 16px 56px; }
 
           .arrows-area { gap: 64px; padding: 44px 56px; }
@@ -233,18 +331,57 @@ export default function Home() {
       <div className="page">
         {/* Centered content column */}
         <div className="col">
+          {/* 100% GRATIS Top Header */}
           <div className="top-banner">🚀 100% GRATIS - Tanpa Biaya Apapun</div>
 
-          <div className="hero-text">
-            <p>📌 <strong>100% Gratis!</strong> Cocok untuk pemula maupun yang ingin naik level dalam bisnis.</p>
-            <p>📌 <strong>Bimbingan langsung</strong> dari mentor sukses dan berpengalaman.</p>
+          {/* Promo Text Section (Image 1) */}
+          <div className="promo-box">
+            <div className="promo-batch">
+              🚀 Program Kuliah Online #BATCH 11 <span className="highlight">[Gratis]</span>
+            </div>
+
+            <div className="promo-slogan">
+              &ldquo;Ayo, Wujudkan Mimpi Jadi Pengusaha&rdquo;
+            </div>
+
+            <div className="promo-speaker-label">
+              🎙️ Bersama Pembicara Nasional
+            </div>
+
+            <div className="promo-speaker-name">
+              Jamil Azzaini
+            </div>
+
+            <div className="promo-speaker-title">
+              (Inspirator Sukses Mulia)
+            </div>
+
+            <div className="promo-desc">
+              <p>*Program yang telah diikuti ribuan peserta dari seluruh Indonesia.</p>
+              <p>Dirancang khusus untuk kamu yang ingin naik kelas secara mindset &amp; penghasilan.</p>
+            </div>
+
+            <div className="promo-free-badge">
+              🎁 100% GRATIS – TERBUKA UNTUK UMUM
+            </div>
           </div>
 
+          {/* Poster Image Section (Image 2) */}
+          <div className="poster-wrap">
+            <img
+              src="/poster.jpg"
+              alt="Program Kuliah Sebulan Jadi Pengusaha Batch 11"
+              className="poster-img"
+            />
+          </div>
+
+          {/* Sub-Banner */}
           <div className="sub-banner">
             <span className="yellow">[GRATIS]</span>
             {" "}Daftar Sekarang Juga..
           </div>
 
+          {/* Animated Arrows */}
           <div className="arrows-area">
             {[0, 1, 2].map((i) => (
               <svg key={i} className="arrow" style={{ animationDelay: `${i * 0.15}s` }} viewBox="0 0 100 120" fill="none">
@@ -253,6 +390,7 @@ export default function Home() {
             ))}
           </div>
 
+          {/* Registration Form */}
           <div className="form-wrap">
             <div className="form-card">
               <h2 className="form-title">Form Pendaftaran</h2>
