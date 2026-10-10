@@ -13,13 +13,7 @@ export default function Home() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const formatPhoneNumber = (val: string) => {
-    const digits = val.replace(/\D/g, "").slice(0, 14);
-    if (digits.length <= 4) return digits;
-    if (digits.length <= 8) return `${digits.slice(0, 4)}-${digits.slice(4)}`;
-    if (digits.length <= 12) return `${digits.slice(0, 4)}-${digits.slice(4, 8)}-${digits.slice(8)}`;
-    return `${digits.slice(0, 4)}-${digits.slice(4, 8)}-${digits.slice(8, 12)}-${digits.slice(12)}`;
-  };
+  const formatPhoneNumber = (val: string) => val.replace(/\D/g, "").slice(0, 14);
 
   const formatAge = (val: string) => {
     return val.replace(/\D/g, "").slice(0, 3);
