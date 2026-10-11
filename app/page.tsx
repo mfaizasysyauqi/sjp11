@@ -83,7 +83,7 @@ mohon bantuanya wasilah ikut program ini saya bisa Makin Kaya, Makin Takwa ðŸ˜Šð
 Terimakasih`;
 
     const msg = encodeURIComponent(textMessage);
-    window.open(`https://api.whatsapp.com/send?phone=6285188375133&text=${msg}`, "_blank");
+    window.open(`https://api.whatsapp.com/send?phone=6281932800707&text=${msg}`, "_blank");
   };
 
   const isValid =
