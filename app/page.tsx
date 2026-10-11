@@ -465,7 +465,7 @@ Terimakasih`;
               <form onSubmit={handleSubmit}>
                 {[
                   { label: "Nama",               name: "nama",      type: "text", inputMode: "text",    ph: "Nama Anda" },
-                  { label: "No Whatsapp",         name: "noWa",      type: "tel",  inputMode: "numeric", ph: "0856-XXXX-XXXX" },
+                  { label: "No Whatsapp",         name: "noWa",      type: "tel",  inputMode: "numeric", ph: "08xxxxxxxxxx" },
                   { label: "Kota / Kecamatan",    name: "kota",      type: "text", inputMode: "text",    ph: "Kota / Kecamatan" },
                   { label: "Usia",                name: "usia",      type: "text", inputMode: "numeric", ph: "Contoh: 25" },
                   { label: "Pekerjaan/Kegiatan",  name: "pekerjaan", type: "text", inputMode: "text",    ph: "Pekerjaan/Kegiatan Saat Ini" },
