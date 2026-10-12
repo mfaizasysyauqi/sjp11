@@ -35,6 +35,7 @@ export default function Home() {
     if (isSubmitting) return;
     setIsSubmitting(true);
 
+    let isSuccess = false;
     try {
       const { error } = await supabase.from("pendaftaran").insert([
         {
@@ -48,6 +49,8 @@ export default function Home() {
 
       if (error) {
         console.error("Gagal menyimpan ke Supabase:", error);
+      } else {
+        isSuccess = true;
       }
     } catch (err) {
       console.error("Terjadi kesalahan saat menyimpan data:", err);
@@ -55,13 +58,30 @@ export default function Home() {
       setIsSubmitting(false);
     }
 
-    // Trigger Facebook Pixel Lead Event
+    // Trigger Meta Pixel Events
     try {
       if (typeof window !== "undefined" && typeof (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq === "function") {
-        (window as unknown as { fbq: (...args: unknown[]) => void }).fbq("track", "Lead", {
+        const fbq = (window as unknown as { fbq: (...args: unknown[]) => void }).fbq;
+
+        // Formulir berhasil dikirim
+        fbq("track", "Lead", {
           content_name: "Pendaftaran Sebulan Jadi Pengusaha Batch 11",
           status: "completed",
         });
+
+        // Menekan tombol untuk membuka WhatsApp
+        fbq("track", "Contact", {
+          content_name: "Membuka WhatsApp Pendaftaran",
+          status: "opened",
+        });
+
+        // Pendaftaran berhasil diverifikasi (tersimpan di database)
+        if (isSuccess) {
+          fbq("track", "CompleteRegistration", {
+            content_name: "Pendaftaran Sebulan Jadi Pengusaha Batch 11",
+            status: "completed",
+          });
+        }
       }
     } catch {
       // ignore
